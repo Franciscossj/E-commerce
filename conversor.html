@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Uso de API</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
+
+	<script>
+        $(function()
+		{
+			$.getJSON('https://mindicador.cl/api', function(data) {
+				$('.txtdolar').val(data.dolar.valor);
+				
+			}).fail(function() {
+				console.log('Error al consumir la API!');
+			});
+			
+			$('.btnConvertir').click(function()
+			{
+				let dolar 			= $('.txtdolar').val();
+				let valorProducto = $('.txtvalorProducto').val();
+				let total = dolar * valorProducto;
+				$('.txtTotalDolares').val(total);
+				return false;				
+			})
+		})
+	
+	</script>
+
+<link type="text/css" rel="stylesheet" href="style1.css">
+
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">E-Commerce</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="index.html">Inicio <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Productos
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="Productos.html">Nuestros productos</a>
+                <a class="dropdown-item" href="nuevoprod.html">Nuevos productos</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="conversor.html">Conversor</a>
+              </div>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Cuenta
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="Inicio_sesion.html">Iniciar sesión</a>
+                <a class="dropdown-item" href="registrar.html">Registrarse</a>
+                
+              </div>
+            </li>
+          </ul>
+          <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <button type="button" class="btn btn-outline-info">Search</button>
+          </form>
+        </div>
+      </nav>
+      
+    <div class="container">
+		<br>		
+        <h1 class="text-center">Conversor de dólares</h1>
+		<br>		
+		<form action="hola.html" method="post">
+			<div class="row mt-2">
+				<div class="col-12 col-md-2 offset-md-3">
+					Valor dolar hoy
+				</div>
+				<div class="col-12 col-md-5">
+					<input type="text" name="txtdolar" class="txtdolar form-control">
+				</div>	
+			</div>	
+			<div class="row mt-2">
+				<div class="col-12 col-md-2 offset-md-3">
+					Valor producto
+				</div>
+				<div class="col-12 col-md-5">
+					<input type="text" name="txtvalorProducto" class="txtvalorProducto form-control">
+				</div>	
+			</div>	
+			<div class="row mt-2">
+				<div class="col-12 col-md-2 offset-md-3">
+					Total en dólares
+				</div>
+				<div class="col-12 col-md-5">
+					<input type="text" name="txtTotalDolares" class="txtTotalDolares form-control">
+				</div>	
+			</div>	
+			<div class="row mt-2">
+				<div class="col-12 col-md-2 offset-md-3">
+					Opciones
+				</div>
+				<div class="col-12 col-md-5">
+					<input type="submit" name="btnConvertir" class="btnConvertir btn btn-info" value="Convertir">
+					<input type="submit" name="btnLimpiar" class="btnLimpiar btn btn-light" value="Limpiar">
+				</div>	
+			</div>		
+		</form>
+	</div>
+</body>
+</html>
